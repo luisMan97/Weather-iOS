@@ -76,6 +76,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func segmentedChanged(to value: Int) {
+        searchText.removeAll()
         showFavorites = value == 1
         initializeWeather(originalWeather)
         originalWeather = weather
@@ -100,10 +101,10 @@ class WeatherViewModel: ObservableObject {
     
     private func search() {
         $searchText
-            .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
+            .debounce(for: showFavorites ? .zero : .milliseconds(800), scheduler: RunLoop.main)
             .removeDuplicates()
             .map({ (string) -> String? in
-                if string.count < 1 {
+                if string.count < 1 && !self.showFavorites {
                     self.weather.removeAll()
                     return nil
                 }
@@ -111,6 +112,16 @@ class WeatherViewModel: ObservableObject {
             })
             .compactMap { $0 }
             .sink(receiveValue: { [self] searchField in
+                if showFavorites {
+                    if searchField.isEmpty {
+                        weather = favoriteWeather.map { $0.toDomain() }
+                        return
+                    }
+                    weather = favoriteWeather.map { $0.toDomain() }.filter({ weather in
+                        weather.name.contains(searchField)
+                    })
+                    return
+                }
                 Task { await self.doSomething(city: searchField) }
             }).store(in: &subscriptions)
     }

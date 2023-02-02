@@ -11,16 +11,16 @@ git clone https://github.com/luisMan97/Weather-iOS.git
 The project does not use third party libraries. Don't cocoapods, don't cartage, don't worry :)
 
 #### Funcionalidades
-- La pantalla principal cuenta con dos principales secciones; el listado de las ciudades de la API publica de weatherapi (https://www.weatherapi.com/docs/) y el listado de ciudades favoritas guardas como favoritas.
-- La pantalla principal, tanto la sección de "Ciudades" cómo de "Favoritos" cuentan con una barra de busqueda, la sección de "Ciudades" busca en el API y la sección de "Favoritos" busca localmente.
+- La pantalla principal cuenta con dos principales secciones; el listado de las ciudades de la API publica de weatherapi (https://www.weatherapi.com/docs/) y el listado de ciudades favoritas guardadas como favoritas.
+- La pantalla principal, tanto la sección de "Ciudades" cómo de "Favoritos" cuentan con una barra de búsqueda, la sección de "Ciudades" busca en el API y la sección de "Favoritos" busca localmente.
 - Cuando se selecciona una ciudad se va al detalle de la ciudad con su información del clima.
-- La pantalla principal, sección de "Favoritos" tiene un botón para editar las ciudades favoritas, más especificamente poderlos eliminar.
+- La pantalla principal, sección de "Favoritos" tiene un botón para editar las ciudades favoritas, más específicamente poderlas eliminar.
 - Cada ciudad de los favoritos tiene el gesto nativo de deslizar y eliminar.
 - En la pantalla del detalle de la ciudad se visualiza la información del clima además de un botón que deja ver el clima de los próximos 4 días.
-- En la pantalla del detalle de la ciudad se tiene un botón para guardar en favoritos la ciudad con su información.
 
-- Se muestra mensaje de error cuando el servicio falla o no hay conexión a internet.
-- Hay una modal de loading que se muestra cada vez que se hace una petición al servicio web.
+- En la pantalla del detalle de la ciudad se tiene un botón para guardar en favoritos la ciudad con su información.
+- Se muestra un mensaje de error cuando el servicio falla o no hay conexión a internet.
+Hay una modal de loading que se muestra cada vez que se hace una petición al servicio web.
 
 #### Funcionalidades técnicas:
 - La aplicación está desarrollada en Swift 5, con SwiftUI, Combine y Async/Await.
