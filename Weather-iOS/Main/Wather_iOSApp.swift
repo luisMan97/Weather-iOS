@@ -14,6 +14,7 @@ struct Recipes_iOSApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
+                .preferredColorScheme(.dark)
         }
     }
 }

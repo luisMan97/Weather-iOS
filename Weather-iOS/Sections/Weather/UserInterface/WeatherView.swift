@@ -46,7 +46,6 @@ struct WeatherView: View {
                     
                     Spacer()
                 }
-                .preferredColorScheme(.dark)
                 .add(viewModel.searchBar)
                 .navigationBarTitle(viewModel.title)
                 .navigationBarTitleDisplayMode(.inline)

@@ -18,24 +18,43 @@ struct SplashView: View {
             if isActive {
                 WeatherFactory.getWeatherView(appContainer: AppContainer())
             } else {
-                Color.white
-                    .ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Image("cloud")
+                            .resizable()
+                            .frame(width: 120, height: 80)
+                            .padding(.top)
+                            .offset(x: (width * 2))
+                        
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Image("cloud")
+                            .resizable()
+                            .frame(width: 120, height: 80)
+                            .padding(.top)
+                            .offset(x: -(width * 2))
+                    }
+                    
+                    Spacer()
+                }
                 
                 Image("weather")
                     .resizable()
                     .frame(width: width, height: height)
+                    .onAnimationCompleted(for: width) {
+                        withAnimation { self.isActive = true }
+                    }
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                withAnimation(.default) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                withAnimation(.default.speed(0.5)) {
                     self.width += 200
                     self.height += 200
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                withAnimation {
-                    self.isActive = true
                 }
             }
         }
