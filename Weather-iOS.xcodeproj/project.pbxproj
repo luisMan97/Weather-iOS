@@ -67,6 +67,8 @@
 		B048EEAA29874190009DBA23 /* Wather_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B048EEA929874190009DBA23 /* Wather_iOSApp.swift */; };
 		B048EEAC298741B0009DBA23 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B048EEAB298741B0009DBA23 /* SplashView.swift */; };
 		B048F00A29874B51009DBA23 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B048F00929874B51009DBA23 /* StringExtensions.swift */; };
+		B0A436F1298C239F00483864 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A436F0298C239F00483864 /* Globals.swift */; };
+		B0A436F3298C23B400483864 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A436F2298C23B400483864 /* RoundedCorner.swift */; };
 		B0BC7937298499F600AE27B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0BC7936298499F600AE27B2 /* Assets.xcassets */; };
 		B0BC793A298499F600AE27B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0BC7939298499F600AE27B2 /* Preview Assets.xcassets */; };
 		B0BC793C298499F600AE27B2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC793B298499F600AE27B2 /* Persistence.swift */; };
@@ -163,6 +165,8 @@
 		B048EEA929874190009DBA23 /* Wather_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wather_iOSApp.swift; sourceTree = "<group>"; };
 		B048EEAB298741B0009DBA23 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		B048F00929874B51009DBA23 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		B0A436F0298C239F00483864 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		B0A436F2298C23B400483864 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		B0BC792F298499F500AE27B2 /* Weather-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC7936298499F600AE27B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0BC7939298499F600AE27B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 		B048F00629874B33009DBA23 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B0A436EF298C239500483864 /* Helpers */,
 				B048F00729874B3F009DBA23 /* Extensions */,
 			);
 			path = Common;
@@ -509,6 +514,15 @@
 				B035C865298ADB700012F562 /* DoubleExtensions.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		B0A436EF298C239500483864 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B0A436F0298C239F00483864 /* Globals.swift */,
+				B0A436F2298C23B400483864 /* RoundedCorner.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B0BC7926298499F500AE27B2 = {
@@ -853,6 +867,7 @@
 				B002FBA629875DB600EEDD22 /* WeatherViewController.swift in Sources */,
 				B035C88F298B0D580012F562 /* CurrentResponse.swift in Sources */,
 				B035C88B298B0D250012F562 /* WeatherDetailResponse.swift in Sources */,
+				B0A436F1298C239F00483864 /* Globals.swift in Sources */,
 				B0D919AC29872C0400A508FB /* APIRouter.swift in Sources */,
 				B002FBB029875DB600EEDD22 /* RemoteWeatherDataSource.swift in Sources */,
 				B002FBAB29875DB600EEDD22 /* GetWeatherUseCase.swift in Sources */,
@@ -878,6 +893,7 @@
 				B0D919DD2987308200A508FB /* View+SearchBar.swift in Sources */,
 				B035C85A298AD2320012F562 /* WeatherDetailViewController.swift in Sources */,
 				B0D919E02987308200A508FB /* SearchBar.swift in Sources */,
+				B0A436F3298C23B400483864 /* RoundedCorner.swift in Sources */,
 				B035C8A1298B124F0012F562 /* BindingExtensions.swift in Sources */,
 				B035C85C298AD2320012F562 /* WeatherDetailViewModel.swift in Sources */,
 				B002FBA729875DB600EEDD22 /* WeatherFactory.swift in Sources */,

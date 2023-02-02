@@ -36,7 +36,7 @@ struct WeatherView: View {
                         List {
                             ForEach(viewModel.weather) { weather in
                                 NavigationLink {
-                                    WeatherDetailFactory.getWeatherDetailView(weather, appContainer: AppContainer())
+                                    WeatherDetailFactory.getWeatherDetailView(weather, comesFromFavorites: viewModel.showFavorites, appContainer: AppContainer())
                                 } label: {
                                     WeatherRowView(weather: weather)
                                 }
@@ -52,7 +52,8 @@ struct WeatherView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) { rightButton }
-                }.environment(\.editMode, $editMode)
+                }
+                .environment(\.editMode, $editMode)
             }
         }
         .alert(item: $viewModel.error) {
@@ -97,9 +98,7 @@ struct WeatherView: View {
     }
     
     private func segmentedChanged(to value: Int) {
-        if value == 0 {
-            editMode = .inactive
-        }
+        if value == 0 { editMode = .inactive }
         viewModel.segmentedChanged(to: value)
     }
     

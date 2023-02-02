@@ -22,6 +22,7 @@ class WeatherDetailViewModel: ObservableObject {
     var currentDate = "Hoy, \(Date().formatted(.dateTime.month().day().hour().minute()))"
     
     private(set) var weather: Weather
+    private(set) var comesFromFavorites: Bool
     
     // Private Properties
     private var subscriptions: Set<AnyCancellable> = []
@@ -36,11 +37,13 @@ class WeatherDetailViewModel: ObservableObject {
     init(getWeatherDetailUseCase: GetWeatherDetailUseCaseProtocol,
          saveWeatherUseCase: SaveWeatherUseCaseProtocol,
          getFavoriteWeatherUseCase: GetFavoriteWeatherProtocol,
-         weather: Weather) {
+         weather: Weather,
+         comesFromFavorites: Bool) {
         self.getWeatherDetailUseCase = getWeatherDetailUseCase
         self.saveWeatherUseCase = saveWeatherUseCase
         self.getFavoriteWeatherUseCase = getFavoriteWeatherUseCase
         self.weather = weather
+        self.comesFromFavorites = comesFromFavorites
         getFavoriteRecipes()
     }
     
@@ -64,6 +67,7 @@ class WeatherDetailViewModel: ObservableObject {
     }
     
     func saveWeather() {
+        setIsVisibleForAutomaticallyDismiss()
         saveWeatherUseCase.invoke(weather: weather)
     }
     
@@ -98,6 +102,13 @@ class WeatherDetailViewModel: ObservableObject {
                 self.weatherDetail?.current?.wind = currentFavoriteWeather?.wind ?? .empty
                 self.weatherDetail?.current?.humidity = currentFavoriteWeather?.humidity ?? .empty*/
         }.store(in: &subscriptions)
+    }
+    
+    private func setIsVisibleForAutomaticallyDismiss() {
+        let localRecipes = favoriteWeather.filter { $0.id == weather.id }
+        if !localRecipes.isEmpty && comesFromFavorites {
+            isWeatherDetailViewVisible = false
+        }
     }
 
 }

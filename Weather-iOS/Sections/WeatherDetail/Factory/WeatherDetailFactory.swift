@@ -11,6 +11,7 @@ import Combine
 enum WeatherDetailFactory {
     
     static func getWeatherDetailView(_ weather: Weather,
+                                     comesFromFavorites: Bool,
                                      appContainer: AppContainerProtocol) -> WeatherDetailView {
         // DataSources
         let remoteDataSource = WeatherDetailURLSessionDataSource(apiManager: appContainer.apiManager)
@@ -24,7 +25,8 @@ enum WeatherDetailFactory {
         let viewModel = WeatherDetailViewModel(getWeatherDetailUseCase: getWeatherDetailUseCase,
                                                saveWeatherUseCase: saveWeatherUseCase,
                                                getFavoriteWeatherUseCase: getFavoriteWeatherUseCase,
-                                               weather: weather)
+                                               weather: weather,
+                                               comesFromFavorites: comesFromFavorites)
         return WeatherDetailView(viewModel: viewModel)
     }
     

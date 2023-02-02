@@ -124,7 +124,6 @@ struct WeatherDetailView: View {
         }.toolbar {
             ToolbarItem {
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
                     viewModel.saveWeather()
                 }) {
                     let localRecipes = viewModel.favoriteWeather.filter { $0.id == viewModel.weather.id }
@@ -135,12 +134,14 @@ struct WeatherDetailView: View {
         }.task {
             await viewModel.doSomething()
         }
+        .onAppear { isWeatherDetailViewVisible = true }
+        .onDisappear { isWeatherDetailViewVisible = false }
     }
     
 }
 
 struct WeatherDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailFactory.getWeatherDetailView(Weather.dummy, appContainer: AppContainer())
+        WeatherDetailFactory.getWeatherDetailView(Weather.dummy, comesFromFavorites: false, appContainer: AppContainer())
     }
 }

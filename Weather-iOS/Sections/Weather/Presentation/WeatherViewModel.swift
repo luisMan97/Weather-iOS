@@ -13,12 +13,12 @@ class WeatherViewModel: ObservableObject {
     // Internal Output Events Properties
     @Published var showProgress = false
     @Published var weather: [Weather] = []
-    @Published var favoriteWeather: [WeatherCoreData] = []
     @Published var error: String?
     @Published var showFavorites = false
     
     // Internal Properties
     var searchBar = SearchBar()
+    var favoriteWeather: [WeatherCoreData] = []
     var progressTitle = ""
     var title = "Weather"
     var pickerOptions = ["Ciudades", "Favoritos"]
@@ -76,7 +76,6 @@ class WeatherViewModel: ObservableObject {
     }
     
     func segmentedChanged(to value: Int) {
-        searchText.removeAll()
         showFavorites = value == 1
         initializeWeather(originalWeather)
         originalWeather = weather
@@ -131,6 +130,9 @@ class WeatherViewModel: ObservableObject {
             .sink { [weak self] favoriteWeather in
                 guard let self = self else { return }
                 self.favoriteWeather = favoriteWeather
+                
+                // Esto evita que al guardar desde el detalle se borre toda la información del detalle
+                if isWeatherDetailViewVisible { return }
                 
                 if self.showFavorites {
                     self.initializeWeather(self.favoriteWeather.map { $0.toDomain() })
